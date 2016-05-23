@@ -8,6 +8,12 @@
   "browser_action": {
     "default_icon": "icon-48.png"
   },
-  "permissions": [
+  "content_scripts": [
+    {
+      "matches": ["*://*.vk.com/*"],
+      "js": ["content/vk.js"],
+      "css": ["content/vk.css"],
+      "run_at": "document_start"
+    }
   ]
 }
