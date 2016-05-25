@@ -14,6 +14,12 @@
       "js": ["content/vk.js"],
       "css": ["content/vk.css"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.facebook.com/*"],
+      "js": ["content/fb.js"],
+      "css": ["content/fb.css"],
+      "run_at": "document_start"
     }
   ]
 }
