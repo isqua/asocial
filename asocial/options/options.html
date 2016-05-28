@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Asocial Options</title>
+    <link rel="stylesheet" href="options.css">
+    <link rel="stylesheet" href="external/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="column">
+            <h1 class="options-title">Расписание</h1>
+
+            <table class="time-table">
+                <tr class="rule-line">
+                    <td class="days">Пн, ср, пт</td>
+                    <td class="time">10.00&thinsp;—&thinsp;19.00</td>
+                    <td class="networks">
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-vk"></i>
+                    </td>
+                </tr>
+                <tr class="rule-line">
+                    <td class="days">Вт, чт</td>
+                    <td class="time">09.00&thinsp;—&thinsp;17.00</td>
+                    <td class="networks">
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-vk"></i>
+                    </td>
+                </tr>
+                <tr class="rule-line">
+                    <td class="days">Сб</td>
+                    <td class="time">17.37&thinsp;—&thinsp;19.23</td>
+                    <td class="networks">
+                        <i class="fa fa-reddit"></i>
+                    </td>
+                </tr>
+            </table>
+
+            <button type="button" class="btn" id="add-button">Новое правило</button>
+
+            <div class="add-rule-form" id="add-rule-form">
+                <form action="#">
+                    <fieldset class="form-row">
+                        <label class="form-label" for="start-time">C <input class="text-input" type="text" name="start-time" pattern="\d{2}[:.]\d{2}" id="start-time"></label>
+                        <label class="form-label" for="end-time">До <input class="text-input" type="text" name="end-time" pattern="\d{2}[:.]\d{2}" id="end-time"></label>
+                    </fieldset>
+                    <fieldset class="form-row">
+                        <input class="form-checkbox" name="day" type="checkbox" id="monday" checked>
+                        <label class="form-label checkbox-label" for="monday"><span class="label-content">Пн</span></label>
+                        <input class="form-checkbox" name="day" type="checkbox" id="tuesday">
+                        <label class="form-label checkbox-label" for="tuesday"><span class="label-content">Вт</span></label>
+                        <input class="form-checkbox" name="day" type="checkbox" id="wednesday">
+                        <label class="form-label checkbox-label" for="wednesday"><span class="label-content">Ср</span></label>
+                        <input class="form-checkbox" name="day" type="checkbox" id="thursday">
+                        <label class="form-label checkbox-label" for="thursday"><span class="label-content">Чт</span></label>
+                        <input class="form-checkbox" name="day" type="checkbox" id="friday">
+                        <label class="form-label checkbox-label" for="friday"><span class="label-content">Пт</span></label>
+                        <input class="form-checkbox" name="day" type="checkbox" id="saturday">
+                        <label class="form-label checkbox-label" for="saturday"><span class="label-content">Сб</span></label>
+                        <input class="form-checkbox" name="day" type="checkbox" id="sunday">
+                        <label class="form-label checkbox-label" for="sunday"><span class="label-content">Вс</span></label>
+                    </fieldset>
+                    <fieldset class="form-row">
+                        <input class="form-checkbox" type="checkbox" name="network" id="vk">
+                        <label class="form-label checkbox-label label-network" for="vk"><i class="fa fa-vk"></i></label>
+                        <input class="form-checkbox" type="checkbox" name="network" id="facebook">
+                        <label class="form-label checkbox-label label-network" for="facebook"><i class="fa fa-facebook"></i></label>
+                        <input class="form-checkbox" type="checkbox" name="network" id="twitter">
+                        <label class="form-label checkbox-label label-network" for="twitter"><i class="fa fa-twitter"></i></label>
+                        <input class="form-checkbox" type="checkbox" name="network" id="reddit">
+                        <label class="form-label checkbox-label label-network" for="reddit"><i class="fa fa-reddit"></i></label>
+                    </fieldset>
+                    <button class="btn" type="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
