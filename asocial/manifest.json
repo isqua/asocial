@@ -21,5 +21,6 @@
       "css": ["content/fb.css"],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "options_page": "options/options.html"
 }

@@ -1,0 +1,170 @@
+.wrapper {
+    width: 800px;
+
+    margin: 0 auto;
+    padding: 20px;
+
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #3d3d3d;
+    text-align: left;
+}
+
+.column {
+    width: 50%;
+}
+
+.options-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+
+    font-size: 28px;
+}
+
+.time-table {
+    width: 300px;
+
+    border-collapse: collapse;
+}
+
+.days {
+    width: 35%;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.time {
+    width: 40%;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.networks {
+    width: 25%;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.rule-line {
+    cursor: pointer;
+}
+
+.rule-line:hover {
+    background-color: #faf0e6;
+}
+
+.btn {
+    display: block;
+
+    padding: 7px 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+
+    background-color: #58ad7c;
+    border: none;
+    border-radius: 2px;
+
+    font-size: 16px;
+    color: #ffffff;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+
+.btn:active {
+    box-shadow: inset 0 1px 4px rgba(0,0,0,.4);
+}
+
+.add-rule-form {
+    display: none;
+
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.showed {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-row {
+    margin-left: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 5px;
+
+    border: none;
+}
+
+.form-row:last-of-type {
+    padding-bottom: 5px;
+}
+
+.form-checkbox {
+    display: none;
+}
+
+.form-label {
+    margin-left: 25px;
+}
+
+.form-label:first-child {
+    margin-left: 0;
+}
+
+.text-input {
+    width: 45px;
+    padding: 5px 10px;
+    margin-left: 10px;
+
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+
+    font-size: 16px;
+    line-height: 1.25;
+    font-family: sans-serif;
+    color: #3d3d3d;
+    outline-color: #58ad7c;
+}
+
+.checkbox-label {
+    margin-left: 10px;
+    padding: 2px 4px;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+    transition: background-color 0.15s ease-out;
+}
+
+.label-content {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.checkbox-label:nth-of-type(1) {
+    margin-left: 0;
+}
+
+.form-checkbox:checked + .checkbox-label {
+    background-color: #faf0e6;
+
+    transition: background-color 0.15s ease-out;
+}
+
+.form-checkbox:checked + .checkbox-label .label-content {
+    border-bottom-color: transparent;
+}
