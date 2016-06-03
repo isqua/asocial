@@ -22,5 +22,8 @@
       "run_at": "document_start"
     }
   ],
+  "permissions": [
+    "storage"
+  ],
   "options_page": "options/options.html"
 }
