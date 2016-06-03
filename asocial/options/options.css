@@ -168,3 +168,33 @@
 .form-checkbox:checked + .checkbox-label .label-content {
     border-bottom-color: transparent;
 }
+
+.icon {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 4px;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+}
+
+.icon:last-child {
+    margin-right: 0;
+}
+
+.icon-facebook {
+    background-image: url('external/svg/facebook.svg');
+}
+
+.icon-vk {
+    background-image: url('external/svg/vk.svg');
+}
+
+.icon-twitter {
+    background-image: url('external/svg/twitter.svg');
+}
+
+.icon-reddit {
+    background-image: url('external/svg/reddit.svg');
+}
