@@ -1,16 +1,10 @@
-/* global TimeHelper, rulesContainer */
+/* global chrome TimeHelper, rulesContainer */
 /* exported tableController */
 var rulesTable = document.querySelector('.time-table');
 
-var DAY_ABBR = {
-    0: 'Вс',
-    1: 'Пн',
-    2: 'Вт',
-    3: 'Ср',
-    4: 'Чт',
-    5: 'Пт',
-    6: 'Сб'
-};
+function getDay(n) {
+    return chrome.i18n.getMessage(`days_${n}`);
+}
 
 var tableController = {
     row: function(rule, number) {
@@ -29,16 +23,16 @@ var tableController = {
             networks.appendChild(networkBlock);
         }
 
-        if (rule.days.length === 0) {
-            days.textContent = 'Каждый день';
+        if (rule.days.length === 0 || rule.days.length === 7) {
+            days.textContent = chrome.i18n.getMessage('options_everyday');
         } else {
-            days.textContent = rule.days.map(day => DAY_ABBR[day]).join(', ');
+            days.textContent = rule.days.map(day => getDay(day)).join(', ');
         }
 
         time.innerHTML = TimeHelper.formatPeriod(rule.start, rule.end);
 
         if (Object.keys(rule.sites).filter(k => rule.sites[k]).length === 0) {
-            networks.textContent = 'Все';
+            networks.textContent = chrome.i18n.getMessage('options_all');
         } else {
             Object.keys(rule.sites).filter(k => rule.sites[k]).forEach(createNetworkIcon);
         }

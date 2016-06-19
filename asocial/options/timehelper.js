@@ -1,3 +1,4 @@
+/* global chrome */
 /* exported TimeHelper */
 'use strict';
 
@@ -31,11 +32,11 @@ var TimeHelper = {
         if (start && end) {
             return this.formatTime(start) + '&thinsp;—&thinsp;' + this.formatTime(end);
         } else if (start && !end) {
-            return 'С ' + this.formatTime(start);
+            return chrome.i18n.getMessage('options_from') + ' ' + this.formatTime(start);
         } else if (!start && end) {
-            return 'До ' + this.formatTime(end);
+            return chrome.i18n.getMessage('options_to') + ' ' + this.formatTime(end);
         }
 
-        return 'Весь день';
+        return chrome.i18n.getMessage('options_allday');
     }
 };

@@ -1,4 +1,4 @@
-/* global chrome, FormManager, Rules, rulesTable, tableController */
+/* global chrome, FormManager, Rules, rulesTable, tableController, translateHTML */
 
 'use strict';
 
@@ -32,6 +32,8 @@ rulesTable.addEventListener('click', e => {
 });
 
 window.addEventListener('load', () => {
+    translateHTML();
+
     chrome.storage.sync.get('rules', obj => {
         rulesContainer = new Rules(obj.rules || []);
 

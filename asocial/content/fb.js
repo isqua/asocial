@@ -1,3 +1,4 @@
+/* global chrome */
 'use strict';
 
 function makeAsocialBlock() {
@@ -7,7 +8,7 @@ function makeAsocialBlock() {
     var ASOCIAL_BLOCK = document.createElement('div');
 
     ASOCIAL_BLOCK.classList.add('asocial_block');
-    ASOCIAL_BLOCK.textContent = 'Здесь нет того, что ищешь ты. Работать иди, друг мой.';
+    ASOCIAL_BLOCK.textContent = chrome.i18n.getMessage('motivateMessage');
 
     return ASOCIAL_BLOCK;
 }

@@ -1,0 +1,65 @@
+{
+  "motivateMessage": {
+    "message": "Здесь нет того, что ищешь ты. Работать иди, друг мой.",
+    "description": "Главное мотивационной сообщение"
+  },
+  "days_1": {
+    "message": "Пн",
+    "description": "Понедельник"
+  },
+  "days_2": {
+    "message": "Вт",
+    "description": "Вторник"
+  },
+  "days_3": {
+    "message": "Ср",
+    "description": "Среда"
+  },
+  "days_4": {
+    "message": "Чт",
+    "description": "Четверг"
+  },
+  "days_5": {
+    "message": "Пт",
+    "description": "Пятница"
+  },
+  "days_6": {
+    "message": "Сб",
+    "description": "Суббота"
+  },
+  "days_0": {
+    "message": "Вс",
+    "description": "Воскресенье"
+  },
+  "options_everyday": {
+    "message": "Каждый день",
+    "description": "Если выбраны все дни недели"
+  },
+  "options_all": {
+    "message": "Все"
+  },
+  "options_from": {
+    "message": "С"
+  },
+  "options_to": {
+    "message": "До"
+  },
+  "options_allday": {
+    "message": "Весь день"
+  },
+  "options_schedule": {
+    "message": "Расписание"
+  },
+  "options_add": {
+    "message": "Добавить"
+  },
+  "options_edit": {
+    "message": "Изменить"
+  },
+  "options_delete": {
+    "message": "Удалить"
+  },
+  "options_newrule": {
+    "message": "Новое правило"
+  }
+}
