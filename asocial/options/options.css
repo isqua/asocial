@@ -24,13 +24,13 @@
 }
 
 .time-table {
-    width: 330px;
+    width: 370px;
 
     border-collapse: collapse;
 }
 
 .days {
-    width: 130px;
+    width: 170px;
 
     padding-top: 5px;
     padding-bottom: 5px;
@@ -53,6 +53,7 @@
 
 .rule-line {
     cursor: pointer;
+    vertical-align: top;
 }
 
 .rule-line:hover {
