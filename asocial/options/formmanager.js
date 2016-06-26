@@ -22,7 +22,7 @@ function FormManager() {
         this.endTime.value = TimeHelper.formatTime(rule.end);
 
         Array.prototype.forEach.call(this.days, (elem) => {
-            elem.checked = rule.days.indexOf(elem.value) !== -1;
+            elem.checked = rule.days.indexOf(parseInt(elem.value, 10)) !== -1;
         });
 
         Array.prototype.forEach.call(this.networks, (elem) => {
@@ -38,7 +38,7 @@ function FormManager() {
         rule.sites = {};
 
         rule.days = Array.prototype.filter.call(this.days, elem => elem.checked)
-            .map(elem => elem.value);
+            .map(elem => parseInt(elem.value, 10));
 
         Array.prototype.forEach.call(this.networks, (elem) => {
             rule.sites[elem.value] = elem.checked;
