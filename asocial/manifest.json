@@ -23,6 +23,10 @@
       "run_at": "document_start"
     }
   ],
+  "background": {
+    "scripts": ["event/disable.js"],
+    "persistent": false
+  },
   "permissions": [
     "storage"
   ],
