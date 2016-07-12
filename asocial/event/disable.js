@@ -2,6 +2,15 @@
 /* exported shouldDisable */
 'use strict';
 
+chrome.runtime.onMessage.addListener(function(message, sender) {
+    shouldDisable(message, function(res) {
+        chrome.tabs.sendMessage(
+          sender.tab.id,
+          res
+        );
+    });
+});
+
 /**
  * checkRule - checking rule
  *
@@ -11,7 +20,9 @@
  * @return {Boolean}
  */
 function checkRule(network, time, rule) {
-    if (!rule.sites[network]) {
+    var disabledNetworks = Object.keys(rule.sites).filter(network => rule.sites[network]);
+
+    if (disabledNetworks.length > 0 && !rule.sites[network]) {
         return false;
     }
 

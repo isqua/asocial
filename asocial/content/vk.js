@@ -34,10 +34,44 @@ function replaceNewsBlock() {
     document.body.classList.add('asocial_showed');
 }
 
-window.addEventListener('load', function() {
-    var asocialContentObserver = new MutationObserver(replaceNewsBlock);
+/**
+ * check - send response for check rules
+ */
+function check() {
+    var CHECKING_TIMEOUT = 5000;
 
-    replaceNewsBlock();
+    chrome.runtime.sendMessage('vk');
+    setTimeout(check, CHECKING_TIMEOUT);
+}
+
+/**
+ * enableAsocial - replace block and enable observer
+ *
+ * @param  {type} callback - function for replace news block.
+ */
+function enableAsocial(callback) {
+    var asocialContentObserver = new MutationObserver(callback);
+
+    callback();
 
     asocialContentObserver.observe(document.body, { attributes: true });
+}
+
+window.addEventListener('load', function() {
+    var isDisabled = false;
+
+    chrome.runtime.onMessage.addListener(function(shouldDisable) {
+        if (shouldDisable) {
+            enableAsocial(replaceNewsBlock);
+            isDisabled = true;
+        } else {
+            if (isDisabled) {
+                location.reload();
+            }
+        }
+    });
+
+    document.body.classList.add('asocial_showed');
+
+    check();
 });
