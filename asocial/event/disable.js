@@ -20,7 +20,9 @@ chrome.runtime.onMessage.addListener(function(message, sender) {
  * @return {Boolean}
  */
 function checkRule(network, time, rule) {
-    if (!rule.sites[network]) {
+    var disabledNetworks = Object.keys(rule.sites).filter(network => rule.sites[network]);
+
+    if (disabledNetworks.length > 0 && !rule.sites[network]) {
         return false;
     }
 
