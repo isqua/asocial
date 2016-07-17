@@ -1,4 +1,3 @@
-/* global chrome */
 /* exported shouldDisable */
 'use strict';
 

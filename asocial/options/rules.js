@@ -1,4 +1,3 @@
-/* global chrome */
 /* exported Rules */
 'use strict';
 

@@ -1,5 +1,3 @@
-/* exported inherit */
-
 'use strict';
 
 /**

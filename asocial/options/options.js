@@ -1,4 +1,4 @@
-/* global chrome, FormManager, Rules, rulesTable, tableController, translateHTML */
+/* global FormManager, Rules, rulesTable, tableController, translateHTML */
 
 'use strict';
 
