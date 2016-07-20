@@ -5,7 +5,11 @@
   },
   "env": {
     "browser": true,
+    "commonjs": true,
     "es6": true
+  },
+  "globals": {
+    "chrome": true
   },
   "rules": {
     "indent": [ 2, 4 ],

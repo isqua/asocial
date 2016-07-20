@@ -1,4 +1,3 @@
-/* global chrome */
 /* exported TimeHelper */
 'use strict';
 

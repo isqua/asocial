@@ -9,7 +9,8 @@
     "precommit:js": "files=$(git diff --cached --diff-filter=ACMTR --name-only | grep '\\.js$'); [ -n \"$files\" ] && eslint $files || exit 0",
     "precommit:css": "files=$(git diff --cached --diff-filter=ACMTR --name-only | grep '\\.css$'); [ -n \"$files\" ] && stylelint $files || exit 0",
     "precommit": "npm run precommit:js && npm run precommit:css",
-    "test": "npm run eslint"
+    "test": "npm run eslint",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "eslint": "^2.10.2",
     "stylelint": "^6.5.1",
-    "stylelint-config-standard": "^8.0.0"
+    "stylelint-config-standard": "^8.0.0",
+    "webpack": "^1.13.1"
   }
 }

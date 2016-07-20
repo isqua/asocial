@@ -1,5 +1,6 @@
-/* global chrome */
 'use strict';
+
+var blocker = require('../blocker.js');
 
 function makeAsocialBlock() {
     /**
@@ -39,10 +40,4 @@ function replaceNewsBlock() {
     document.body.classList.add('asocial_showed');
 }
 
-window.addEventListener('load', function() {
-    var asocialContentObserver = new MutationObserver(replaceNewsBlock);
-
-    replaceNewsBlock();
-
-    asocialContentObserver.observe(document.body, { attributes: true });
-});
+blocker.init('facebook', replaceNewsBlock);

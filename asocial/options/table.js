@@ -1,4 +1,4 @@
-/* global chrome TimeHelper, rulesContainer */
+/* global TimeHelper, rulesContainer */
 /* exported tableController */
 var rulesTable = document.querySelector('.time-table');
 
