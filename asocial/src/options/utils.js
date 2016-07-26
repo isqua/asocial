@@ -1,33 +1,41 @@
 'use strict';
 
 /**
-* callSuper - call method from parent with child context and arguments.
-*
-* @param  {String} method - called method.
-* @return {*} - returned result.
+ * Call method from parent with child context and arguments.
+ * @param {String} method - called method.
+ * @param {...*} arguments for method.
+ * @return {*} - returned result.
 */
 function callSuper(method) {
     var args = Array.prototype.slice.call(arguments, 1);
     var superProto = this.constructor.__super.prototype[method];
 
-    if (superProto) {
-        return superProto.apply(this, args);
-    }
-
-    return null;
+    return superProto ? superProto.apply(this, args) : null;
 }
 
 module.exports = {
     /**
-    * inherit - inherit prototypes from parent function.
-    *
-    * @param  {Function} Parent
-    * @param  {Function} Child
+     * Inherit prototypes from parent function.
+     * @param  {Function} Parent
+     * @param  {Function} Child
     */
-    inherit: function inherit(Parent, Child) {
+    inherit: function inherit(Child, Parent) {
         Object.assign(Child.prototype, Parent.prototype);
         Child.__super = Parent;
 
         Child.prototype.callSuper = callSuper;
+    },
+
+    /**
+     * Make DocumentFragment and insert content in it.
+     * @param {HTMLElement[]} array
+     * @returns {DocumentFragment}
+     */
+    getFragment: function getFragment(array) {
+        var df = document.createDocumentFragment();
+
+        array.forEach(df.appendChild, df);
+
+        return df;
     }
 };
