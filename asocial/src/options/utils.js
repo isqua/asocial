@@ -17,15 +17,17 @@ function callSuper(method) {
     return null;
 }
 
-/**
-* inherit - inherit prototypes from parent function.
-*
-* @param  {Function} Parent
-* @param  {Function} Child
-*/
-function inherit(Parent, Child) {
-    Object.assign(Child.prototype, Parent.prototype);
-    Child.__super = Parent;
+module.exports = {
+    /**
+    * inherit - inherit prototypes from parent function.
+    *
+    * @param  {Function} Parent
+    * @param  {Function} Child
+    */
+    inherit: function inherit(Parent, Child) {
+        Object.assign(Child.prototype, Parent.prototype);
+        Child.__super = Parent;
 
-    Child.prototype.callSuper = callSuper;
-}
+        Child.prototype.callSuper = callSuper;
+    }
+};

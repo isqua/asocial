@@ -1,4 +1,3 @@
-/* exported Rules */
 'use strict';
 
 function Rules(array) {
@@ -22,3 +21,5 @@ Rules.prototype.edit = function(number, object) {
     this.storage.rules[number] = object;
     chrome.storage.sync.set(this.storage);
 };
+
+module.exports = Rules;

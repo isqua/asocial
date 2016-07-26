@@ -1,6 +1,8 @@
-/* global TimeHelper inherit EventEmitter */
-/* exported FormManager */
 'use strict';
+
+var utils = require('./utils');
+var EventEmitter = require('./eventemitter');
+var TimeHelper = require('./timehelper');
 
 function FormManager() {
     this.form = document.querySelector('#add-rule-form');
@@ -135,4 +137,6 @@ function FormManager() {
     });
 }
 
-inherit(EventEmitter, FormManager);
+utils.inherit(EventEmitter, FormManager);
+
+module.exports = FormManager;

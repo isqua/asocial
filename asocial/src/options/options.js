@@ -1,11 +1,15 @@
-/* global FormManager, Rules, rulesTable, tableController, translateHTML */
-
 'use strict';
+
+var FormManager = require('./formmanager');
+var Rules = require('./rules');
+var tableController = require('./table');
+var translate = require('./translate');
 
 var rulesContainer;
 var deleteRule;
 
 var addButton = document.querySelector('#add-button');
+var rulesTable = document.querySelector('.time-table');
 
 var formManager = new FormManager();
 
@@ -32,15 +36,15 @@ rulesTable.addEventListener('click', e => {
 });
 
 window.addEventListener('load', () => {
-    translateHTML();
+    translate.translateHTML();
 
     chrome.storage.sync.get('rules', obj => {
         rulesContainer = new Rules(obj.rules || []);
 
-        tableController.table();
+        tableController.table(rulesContainer);
 
         chrome.storage.onChanged.addListener(() => {
-            tableController.table();
+            tableController.table(rulesContainer);
         });
     });
 });

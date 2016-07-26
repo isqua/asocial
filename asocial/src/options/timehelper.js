@@ -1,4 +1,3 @@
-/* exported TimeHelper */
 'use strict';
 
 var TimeHelper = {
@@ -39,3 +38,5 @@ var TimeHelper = {
         return chrome.i18n.getMessage('options_allday');
     }
 };
+
+module.exports = TimeHelper;

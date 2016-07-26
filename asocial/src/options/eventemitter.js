@@ -49,3 +49,5 @@ EventEmitter.prototype.un = function(event, callback) {
         this.__events[event].splice(callbackIndex, 1);
     }
 };
+
+module.exports = EventEmitter;

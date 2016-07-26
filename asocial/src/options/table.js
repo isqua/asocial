@@ -1,5 +1,6 @@
-/* global TimeHelper, rulesContainer */
-/* exported tableController */
+'use strict';
+
+var TimeHelper = require('./timehelper');
 var rulesTable = document.querySelector('.time-table');
 
 function getDay(n) {
@@ -42,8 +43,10 @@ var tableController = {
         rulesTable.appendChild(row);
     },
 
-    table: function() {
+    table: function(rules) {
         rulesTable.innerHTML = '';
-        rulesContainer.storage.rules.forEach(this.row);
+        rules.storage.rules.forEach(this.row);
     }
 };
+
+module.exports = tableController;
