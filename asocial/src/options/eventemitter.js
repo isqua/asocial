@@ -1,13 +1,12 @@
 'use strict';
 
 /**
- * EventEmitter - make custom events and listeners.
+ * Make custom events and listeners.
  * @constructor
  */
 function EventEmitter() {}
 /**
- * EventEmitter.prototype.on - add listener like addEventListener.
- *
+ * Add listener like addEventListener.
  * @param  {String} event
  * @param  {Function} callback
  */
@@ -24,7 +23,7 @@ EventEmitter.prototype.on = function(event, callback) {
 };
 
 /**
- * EventEmitter.prototype.trigger - call listeners.
+ * Call listeners.
  *
  * @param  {String} event
  * @param  {Object} data
@@ -38,7 +37,7 @@ EventEmitter.prototype.trigger = function(event, data) {
 };
 
 /**
- * EventEmitter.prototype.un - remove listener like removeEventListener.
+ * Remove listener like removeEventListener.
  *
  * @param  {String} event
  * @param  {Function} callback
@@ -49,3 +48,5 @@ EventEmitter.prototype.un = function(event, callback) {
         this.__events[event].splice(callbackIndex, 1);
     }
 };
+
+module.exports = EventEmitter;

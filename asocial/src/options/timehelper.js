@@ -1,7 +1,12 @@
-/* exported TimeHelper */
 'use strict';
 
 var TimeHelper = {
+    /**
+     * Parse string for time array.
+     *
+     * @param {String} str
+     * @returns {*}
+     */
     parse: function(str) {
         var timePattern = /^([0-9]{1,2})[.:, ]?([0-9]{2})/;
         var times = timePattern.exec(str);
@@ -19,14 +24,33 @@ var TimeHelper = {
         return null;
     },
 
+    /**
+     * Convert time value to 2-digit format.
+     *
+     * @param {Number} time
+     * @returns {String}
+     */
     formatItem: function(time) {
         return String(time < 10 ? '0' + time : time);
     },
 
-    formatTime: function(array) {
-        return array ? array.map(this.formatItem).join(':') : '';
+    /**
+     * Combine hours and minutes to [hh:mm] format-string.
+     *
+     * @param {RuleTime} time
+     * @returns {String}
+     */
+    formatTime: function(time) {
+        return time ? time.map(this.formatItem).join(':') : '';
     },
 
+    /**
+     * Combine start and end time.
+     *
+     * @param {RuleTime} start
+     * @param {RuleTime} end
+     * @returns {String}
+     */
     formatPeriod: function(start, end) {
         if (start && end) {
             return this.formatTime(start) + '&thinsp;—&thinsp;' + this.formatTime(end);
@@ -39,3 +63,5 @@ var TimeHelper = {
         return chrome.i18n.getMessage('options_allday');
     }
 };
+
+module.exports = TimeHelper;

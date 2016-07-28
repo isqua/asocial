@@ -1,6 +1,39 @@
-/* global TimeHelper inherit EventEmitter */
-/* exported FormManager */
 'use strict';
+
+/**
+ * Rule for blocking algorithm
+ * @typedef {Object} Rule
+ *
+ * @property {RuleTime|Null} start - time to start blocking.
+ * @property {RuleTime|Null} end - time to end blocking.
+ * @property {RuleSites} sites
+ * @property {RuleDays} days
+ */
+
+/**
+ * Array with to numbers: hours and minutes.
+ * @typedef {Array.<Number>} RuleTime
+ * @property {Number} 0 - hours
+ * @property {Number} 1 - minutes
+ */
+
+/**
+ * Object with checked social networks (keys) and boolean values.
+ * @typedef {Object} RuleSites
+ * @property {Boolean} vk
+ * @property {Boolean} facebook
+ * @property {Boolean} reddit
+ * @property {Boolean} twitter
+ */
+
+/**
+ * Array with number of days (0 - Sunday, 6 - Saturday).
+ * @typedef {Number[]} RuleDays
+ */
+
+var utils = require('./utils');
+var EventEmitter = require('./eventemitter');
+var TimeHelper = require('./timehelper');
 
 function FormManager() {
     this.form = document.querySelector('#add-rule-form');
@@ -8,7 +41,6 @@ function FormManager() {
     this.networks = this.form.elements.network;
     this.startTime = this.form.elements.start_time;
     this.endTime = this.form.elements.end_time;
-    this.errorRow = document.querySelector('.error-row');
 
     this.container = document.querySelector('#add-rule-container');
 
@@ -17,6 +49,10 @@ function FormManager() {
     this.editButton = this.form.elements.edit_button;
     this.deleteButton = this.form.elements.delete_button;
 
+    /**
+     * Fill form with rule.
+     * @param {Rule} rule
+     */
     this.fill = (rule) => {
         this.startTime.value = TimeHelper.formatTime(rule.start);
         this.endTime.value = TimeHelper.formatTime(rule.end);
@@ -30,6 +66,10 @@ function FormManager() {
         });
     };
 
+    /**
+     * Parse form and make rule for blocking.
+     * @returns {Rule}
+     */
     this.make = () => {
         var rule = {};
 
@@ -47,10 +87,18 @@ function FormManager() {
         return rule;
     };
 
+    /**
+     * Check at least one input is filled.
+     * @param {NodeList} checkboxes
+     * @returns {Boolean}
+     */
     this.validateCheckbox = (checkboxes) => {
         return Array.prototype.some.call(checkboxes, elem => elem.checked);
     };
 
+    /**
+     * @returns {Boolean}
+     */
     this.validateTime = () => {
         var startArray = TimeHelper.parse(this.startTime.value);
         var endArray = TimeHelper.parse(this.endTime.value);
@@ -72,6 +120,9 @@ function FormManager() {
         return true;
     };
 
+    /**
+     * Check changes in input and disable buttons.
+     */
     this.changeForm = () => {
         var inputs = this.form.getElementsByTagName('input');
 
@@ -82,9 +133,14 @@ function FormManager() {
         });
     };
 
+    /**
+     * Check validity of time and at least one input filled.
+     * @returns {Boolean} - true - valid, false - invalid.
+     */
     this.check = () => {
         var isTimeValid = this.validateTime();
-        var isValid = this.startTime.checkValidity() || this.endTime.checkValidity() || this.validateCheckbox(this.days) || this.validateCheckbox(this.networks);
+        var isValid = this.startTime.checkValidity() || this.endTime.checkValidity() ||
+            this.validateCheckbox(this.days) || this.validateCheckbox(this.networks);
         var isFormValid = isValid && isTimeValid;
 
         this.saveButton.disabled = this.editButton.disabled = ! isFormValid;
@@ -92,6 +148,10 @@ function FormManager() {
         return isFormValid;
     };
 
+    /**
+     * Show add/change form in the page.
+     * @param {String} type
+     */
     this.show = (type) => {
         this.container.classList.add('showed');
         this.editButtonRow.classList.toggle('hidden', type === 'add');
@@ -135,4 +195,6 @@ function FormManager() {
     });
 }
 
-inherit(EventEmitter, FormManager);
+utils.inherit(FormManager, EventEmitter);
+
+module.exports = new FormManager();

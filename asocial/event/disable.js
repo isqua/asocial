@@ -1,4 +1,3 @@
-/* exported shouldDisable */
 'use strict';
 
 chrome.runtime.onMessage.addListener(function(message, sender) {
