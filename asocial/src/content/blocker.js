@@ -1,16 +1,3 @@
-/**
- * enableAsocial - replace block and enable observer
- *
- * @param  {type} callback - function for replace news block.
- */
-function enableAsocial(callback) {
-    var asocialContentObserver = new MutationObserver(callback);
-
-    callback();
-
-    asocialContentObserver.observe(document.body, { attributes: true });
-}
-
 module.exports = {
     CHECKING_TIMEOUT: 5000,
     /**
@@ -35,7 +22,7 @@ module.exports = {
 
             chrome.runtime.onMessage.addListener(shouldDisable => {
                 if (shouldDisable) {
-                    enableAsocial(newsBlocker);
+                    newsBlocker();
                     isDisabled = true;
                 } else {
                     if (isDisabled) {
@@ -44,7 +31,11 @@ module.exports = {
                 }
             });
 
-            document.body.classList.add('asocial_showed');
+            var asocialContentObserver = new MutationObserver(function() {
+                chrome.runtime.sendMessage(network);
+            });
+
+            asocialContentObserver.observe(document.body, { attributes: true });
 
             this.check(network);
         });

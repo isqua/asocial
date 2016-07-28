@@ -31,8 +31,6 @@ function replaceNewsBlock() {
             RIGHT_COLUMN.parentNode.removeChild(RIGHT_COLUMN);
         }
     }
-
-    document.body.classList.add('asocial_showed');
 }
 
 blocker.init('vk', replaceNewsBlock);
