@@ -36,8 +36,6 @@ function replaceNewsBlock() {
     if (LEFT_COLUMN) {
         LEFT_COLUMN.parentNode.removeChild(LEFT_COLUMN);
     }
-
-    document.body.classList.add('asocial_showed');
 }
 
 blocker.init('facebook', replaceNewsBlock);
