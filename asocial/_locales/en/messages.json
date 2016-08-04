@@ -61,5 +61,8 @@
   },
   "options_newrule": {
     "message": "New rule"
+  },
+  "delete": {
+    "message": "Delete"
   }
 }

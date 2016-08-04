@@ -47,7 +47,6 @@ function FormManager() {
     this.editButtonRow = document.querySelector('.edit-buttons-row');
     this.saveButton = this.form.elements.save_button;
     this.editButton = this.form.elements.edit_button;
-    this.deleteButton = this.form.elements.delete_button;
 
     /**
      * Fill form with rule.
@@ -185,13 +184,6 @@ function FormManager() {
             this.trigger('save', this.make());
             this.hide();
         }
-    });
-
-    this.deleteButton.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        this.trigger('remove');
-        this.hide();
     });
 }
 

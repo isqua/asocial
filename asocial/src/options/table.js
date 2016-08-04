@@ -2,6 +2,7 @@
 
 var TimeHelper = require('./timehelper');
 var EventEmitter = require('./eventemitter');
+
 var utils = require('./utils');
 
 function getDay(n) {
@@ -13,9 +14,15 @@ function TableController() {
     this.templateRow = document.querySelector('#row-template').content.querySelector('.rule-line');
 
     this.rulesTable.addEventListener('click', (e) => {
-        var number = e.target.dataset.number || e.target.parentNode.dataset.number;
+        var target = e.target;
 
-        this.trigger('click', number);
+        if (target.dataset.delete) {
+            this.trigger('remove', target.dataset.delete);
+        } else {
+            var number = target.dataset.number || target.parentNode.dataset.number;
+
+            this.trigger('click', number);
+        }
     });
 }
 
@@ -62,10 +69,13 @@ TableController.prototype.getSites = function(sites) {
  */
 TableController.prototype.row = function(rule, number) {
     var row = this.templateRow.cloneNode(true);
+    var buttonDelete = row.querySelector('.btn-delete');
 
     row.querySelector('.days').textContent = this.getDays(rule.days);
     row.querySelector('.time').innerHTML = TimeHelper.formatPeriod(rule.start, rule.end);
     row.querySelector('.networks').appendChild(this.getSites(rule.sites));
+    buttonDelete.dataset.delete = number;
+    buttonDelete.title = chrome.i18n.getMessage("delete");
 
     row.dataset.number = number;
 
