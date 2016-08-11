@@ -61,5 +61,8 @@
   },
   "options_newrule": {
     "message": "Новое правило"
+  },
+  "delete": {
+    "message": "Удалить"
   }
 }

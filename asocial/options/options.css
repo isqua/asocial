@@ -24,7 +24,7 @@
 }
 
 .time-table {
-    width: 370px;
+    width: 410px;
 
     border-collapse: collapse;
 }
@@ -236,4 +236,29 @@
 
 .icon-reddit {
     background-image: url('external/svg/reddit.svg');
+}
+
+.btn-delete {
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+    font-size: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url('external/svg/delete.svg');
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+.rule-line:hover .btn-delete {
+    opacity: 0.2;
+}
+
+.rule-line:hover .btn-delete:hover {
+    opacity: 1;
+    transition-duration: 0.3s;
 }

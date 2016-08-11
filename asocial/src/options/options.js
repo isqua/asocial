@@ -11,9 +11,10 @@ var deleteRule;
 var addButton = document.querySelector('#add-button');
 
 FormManager.on('add', (rule) => rulesContainer.add(rule));
-FormManager.on('remove', () => rulesContainer.remove(deleteRule));
 FormManager.on('save', (rule) => rulesContainer.edit(deleteRule, rule));
 FormManager.on('hide', () => addButton.classList.remove('hidden'));
+
+TableController.on('remove', (number) => rulesContainer.remove(number));
 
 addButton.addEventListener('click', e => {
     e.preventDefault();
