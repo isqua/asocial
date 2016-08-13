@@ -56,8 +56,8 @@ TableController.prototype.getSites = function(sites) {
     var sitesFilter = Object.keys(sites).filter(k => sites[k]).sort();
 
     return sitesFilter.length ?
-        document.createTextNode(chrome.i18n.getMessage('options_all')) :
-        utils.getFragment(sitesFilter.map(this.getNetworkIcon));
+        utils.getFragment(sitesFilter.map(this.getNetworkIcon)) :
+        document.createTextNode(chrome.i18n.getMessage('options_all'));
 };
 
 /**
@@ -75,7 +75,7 @@ TableController.prototype.row = function(rule, number) {
     row.querySelector('.time').innerHTML = TimeHelper.formatPeriod(rule.start, rule.end);
     row.querySelector('.networks').appendChild(this.getSites(rule.sites));
     buttonDelete.dataset.delete = number;
-    buttonDelete.title = chrome.i18n.getMessage("delete");
+    buttonDelete.title = chrome.i18n.getMessage('delete');
 
     row.dataset.number = number;
 
