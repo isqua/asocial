@@ -238,6 +238,10 @@
     background-image: url('external/svg/reddit.svg');
 }
 
+.icon-ok {
+    background-image: url('external/svg/ok.svg');
+}
+
 .btn-delete {
     opacity: 0;
     width: 20px;
