@@ -4,7 +4,8 @@ module.exports = [
     {
         entry: {
             vk: './asocial/src/content/networks/vk.js',
-            fb: './asocial/src/content/networks/facebook.js'
+            fb: './asocial/src/content/networks/facebook.js',
+            tw: './asocial/src/content/networks/twitter.js'
         },
 
         output: {

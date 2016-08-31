@@ -21,6 +21,12 @@
       "js": ["content/fb.js"],
       "css": ["content/fb.css"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.twitter.com/*"],
+      "js": ["content/tw.js"],
+      "css": ["content/tw.css"],
+      "run_at": "document_start"
     }
   ],
   "background": {
