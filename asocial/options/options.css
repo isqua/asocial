@@ -1,13 +1,13 @@
 body {
     font-family: sans-serif;
-    margin: 0;
+    margin: 0 auto;
     display: flex;
+    flex-direction: row-reverse;
     min-height: 100vh;
+    max-width: 800px;
 }
 
 .wrapper {
-    width: 800px;
-
     margin: 0;
     padding: 20px;
 
@@ -273,7 +273,7 @@ body {
 .help {
     margin-left: auto;
     background: #f5f5f5;
-    border-left: 1px solid #e0e0e0;
+    border: 1px solid #e0e0e0;
     flex-shrink: 0;
     color: #5a5a5a;
     padding: 20px;
