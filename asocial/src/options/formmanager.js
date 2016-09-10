@@ -47,6 +47,8 @@ function FormManager() {
     this.saveButton = this.form.elements.save_button;
     this.editButton = this.form.elements.edit_button;
 
+    this.inputs = Array.prototype.slice.call(this.form.getElementsByTagName('input'), 0);
+
     /**
      * Fill form with rule.
      * @param {Rule} rule
@@ -119,19 +121,6 @@ function FormManager() {
     };
 
     /**
-     * Check changes in input and disable buttons.
-     */
-    this.changeForm = () => {
-        var inputs = this.form.getElementsByTagName('input');
-
-        Array.prototype.forEach.call(inputs, (elem) => {
-            elem.addEventListener('change', () => {
-                this.saveButton.disabled = this.editButton.disabled = !this.check();
-            });
-        });
-    };
-
-    /**
      * Check validity of time and at least one input filled.
      * @returns {Boolean} - true - valid, false - invalid.
      */
@@ -147,6 +136,13 @@ function FormManager() {
     };
 
     /**
+     * Enable or disable form buttons based on form validity
+     */
+    this.toggleButtons = () => {
+        this.saveButton.disabled = this.editButton.disabled = !this.check();
+    };
+
+    /**
      * Show add/change form in the page.
      * @param {String} type
      */
@@ -157,7 +153,10 @@ function FormManager() {
         this.endTime.classList.toggle('onerror', !this.validateTime());
         this.startTime.addEventListener('blur', this.validateTime);
         this.endTime.addEventListener('blur', this.validateTime);
-        this.changeForm();
+
+        this.inputs.forEach((input) => {
+            input.addEventListener('change', this.toggleButtons);
+        });
     };
 
     this.hide = () => {
@@ -165,6 +164,11 @@ function FormManager() {
         this.editButtonRow.classList.add('hidden');
         this.startTime.removeEventListener('blur', this.validateTime);
         this.endTime.removeEventListener('blur', this.validateTime);
+
+        this.inputs.forEach((input) => {
+            input.removeEventListener('change', this.toggleButtons);
+        });
+
         this.trigger('hide');
     };
 
