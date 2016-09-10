@@ -1,0 +1,29 @@
+@-webkit-keyframes animationBody {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    -webkit-animation: animationBody step-end 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.asocial_showed {
+    opacity: 1;
+}
+
+.asocial_block {
+    min-height: 300px;
+
+    padding-top: 200px;
+
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: center;
+}
