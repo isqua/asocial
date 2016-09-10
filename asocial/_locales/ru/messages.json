@@ -50,6 +50,18 @@
   "options_schedule": {
     "message": "Расписание"
   },
+  "options_time": {
+    "message": "Время",
+    "description": "Легенда полей со временм"
+  },
+  "options_days": {
+    "message": "Дни",
+    "description": "Легенда кнопок с днями"
+  },
+  "options_sites": {
+    "message": "Сайты",
+    "description": "Легенда кнопок с сайтам"
+  },
   "options_add": {
     "message": "Добавить"
   },

@@ -50,6 +50,15 @@
   "options_schedule": {
     "message": "Schedule"
   },
+  "options_time": {
+    "message": "Time"
+  },
+  "options_days": {
+    "message": "Days"
+  },
+  "options_sites": {
+    "message": "Sites"
+  },
   "options_add": {
     "message": "Add"
   },

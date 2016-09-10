@@ -16,12 +16,14 @@
         <div class="add-rule-form" id="add-rule-container">
             <form action="#" method="GET" id="add-rule-form">
                 <fieldset class="form-row">
+                    <span class="form-row-title" data-i18n="options_time"></span>
                     <label class="form-label" for="start-time" data-i18n="options_from"></label>
                     <input class="text-input" type="text" name="start_time" pattern="^([0-9]{1,2})[.:, ]?([0-9]{2})" id="start-time" required>
                     <label class="form-label" for="end-time" data-i18n="options_to"></label>
                     <input class="text-input" type="text" name="end_time" pattern="^([0-9]{1,2})[.:, ]?([0-9]{2})" id="end-time" required>
                 </fieldset>
                 <fieldset class="form-row">
+                    <span class="form-row-title" data-i18n="options_days">Дни</span>
                     <input class="form-checkbox" name="day" type="checkbox" id="monday" value=1>
                     <label class="form-label checkbox-label" for="monday"><span class="label-content" data-i18n="days_1"></span></label>
                     <input class="form-checkbox" name="day" type="checkbox" id="tuesday" value=2>
@@ -38,6 +40,7 @@
                     <label class="form-label checkbox-label" for="sunday"><span class="label-content" data-i18n="days_0"></span></label>
                 </fieldset>
                 <fieldset class="form-row">
+                    <span class="form-row-title" data-i18n="options_sites"></span>
                     <input class="form-checkbox" type="checkbox" name="network" id="vk" value="vk">
                     <label class="form-label checkbox-label label-network" for="vk"><span class="icon icon-vk"></span></label>
                     <input class="form-checkbox" type="checkbox" name="network" id="facebook" value="facebook">
