@@ -11,10 +11,6 @@
     text-align: left;
 }
 
-.column {
-    width: 50%;
-}
-
 .options-title {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -94,10 +90,6 @@
 
 .btn:disabled:hover, .btn:disabled:active {
     box-shadow: none;
-}
-
-.btn-red {
-    background-color: #ad5858;
 }
 
 .add-rule-form {
@@ -232,10 +224,6 @@
 
 .icon-twitter {
     background-image: url('external/svg/twitter.svg');
-}
-
-.icon-reddit {
-    background-image: url('external/svg/reddit.svg');
 }
 
 .icon-ok {

@@ -28,8 +28,6 @@ TableController.on('click', (number) => {
     deleteRule = number;
     FormManager.fill(rulesContainer.storage.rules[number]);
     FormManager.show('edit');
-
-    addButton.classList.remove('hidden');
 });
 
 window.addEventListener('load', () => {

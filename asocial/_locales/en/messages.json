@@ -56,9 +56,6 @@
   "options_edit": {
     "message": "Change"
   },
-  "options_delete": {
-    "message": "Delete"
-  },
   "options_newrule": {
     "message": "New rule"
   },

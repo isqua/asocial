@@ -56,9 +56,6 @@
   "options_edit": {
     "message": "Изменить"
   },
-  "options_delete": {
-    "message": "Удалить"
-  },
   "options_newrule": {
     "message": "Новое правило"
   },

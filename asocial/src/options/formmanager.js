@@ -22,7 +22,6 @@
  * @typedef {Object} RuleSites
  * @property {Boolean} vk
  * @property {Boolean} facebook
- * @property {Boolean} reddit
  * @property {Boolean} twitter
  */
 
