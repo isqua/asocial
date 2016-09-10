@@ -90,6 +90,7 @@ TableController.prototype.row = function(rule, number) {
 TableController.prototype.table = function(rules) {
     this.rulesTable.innerHTML = '';
     this.rulesTable.appendChild(utils.getFragment(rules.map(this.row, this)));
+    this.rulesTable.classList.toggle('time-table-empty', rules.lenght === 0);
 };
 
 utils.inherit(TableController, EventEmitter);

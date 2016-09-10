@@ -38,6 +38,10 @@ window.addEventListener('load', () => {
 
         TableController.table(rulesContainer.storage.rules);
 
+        if (rulesContainer.storage.rules.length === 0) {
+            addButton.click();
+        }
+
         chrome.storage.onChanged.addListener(() => {
             TableController.table(rulesContainer.storage.rules);
         });
