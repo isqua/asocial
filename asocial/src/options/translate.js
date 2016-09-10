@@ -8,7 +8,7 @@ module.exports = {
         var elems = document.querySelectorAll('[data-i18n]');
 
         Array.prototype.forEach.call(elems, elem => {
-            elem.textContent = chrome.i18n.getMessage(elem.dataset.i18n);
+            elem.innerHTML = chrome.i18n.getMessage(elem.dataset.i18n);
         });
     }
 };
