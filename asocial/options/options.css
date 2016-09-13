@@ -64,7 +64,8 @@ body {
     vertical-align: top;
 }
 
-.rule-line:hover {
+.rule-line:hover,
+.rule-line-selected {
     background-color: #faf0e6;
 }
 
