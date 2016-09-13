@@ -65,8 +65,8 @@
   "options_add": {
     "message": "Добавить"
   },
-  "options_edit": {
-    "message": "Изменить"
+  "options_save": {
+    "message": "Сохранить"
   },
   "options_newrule": {
     "message": "Новое правило"

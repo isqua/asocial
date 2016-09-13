@@ -43,9 +43,8 @@ function FormManager() {
 
     this.container = document.querySelector('#add-rule-container');
 
-    this.editButtonRow = document.querySelector('.edit-buttons-row');
+    this.addButton = this.form.elements.add_button;
     this.saveButton = this.form.elements.save_button;
-    this.editButton = this.form.elements.edit_button;
 
     this.inputs = Array.prototype.slice.call(this.form.getElementsByTagName('input'), 0);
 
@@ -130,7 +129,7 @@ function FormManager() {
             this.validateCheckbox(this.days) || this.validateCheckbox(this.networks);
         var isFormValid = isValid && isTimeValid;
 
-        this.saveButton.disabled = this.editButton.disabled = ! isFormValid;
+        this.addButton.disabled = this.saveButton.disabled = ! isFormValid;
 
         return isFormValid;
     };
@@ -139,16 +138,14 @@ function FormManager() {
      * Enable or disable form buttons based on form validity
      */
     this.toggleButtons = () => {
-        this.saveButton.disabled = this.editButton.disabled = !this.check();
+        this.addButton.disabled = this.saveButton.disabled = !this.check();
     };
 
     /**
      * Show add/change form in the page.
-     * @param {String} type
+     * @param {String} mode One of 'add' and 'save'
      */
-    this.show = (type) => {
-        this.editButtonRow.classList.toggle('hidden', type === 'add');
-        this.saveButton.classList.toggle('hidden', type !== 'add');
+    this.show = (mode) => {
         this.endTime.classList.toggle('onerror', !this.validateTime());
         this.startTime.addEventListener('blur', this.validateTime);
         this.endTime.addEventListener('blur', this.validateTime);
@@ -157,13 +154,14 @@ function FormManager() {
             input.addEventListener('change', this.toggleButtons);
         });
 
+        this.form.classList.toggle('form-mode-add', mode === 'add');
+        this.form.classList.toggle('form-mode-edit', mode === 'edit');
         this.container.classList.add('showed');
         this.trigger('show');
     };
 
     this.hide = () => {
         this.container.classList.remove('showed');
-        this.editButtonRow.classList.add('hidden');
         this.startTime.removeEventListener('blur', this.validateTime);
         this.endTime.removeEventListener('blur', this.validateTime);
 
@@ -174,7 +172,7 @@ function FormManager() {
         this.trigger('hide');
     };
 
-    this.saveButton.addEventListener('click', (e) => {
+    this.addButton.addEventListener('click', (e) => {
         e.preventDefault();
 
         if (this.check()) {
@@ -182,7 +180,7 @@ function FormManager() {
         }
     });
 
-    this.editButton.addEventListener('click', (e) => {
+    this.saveButton.addEventListener('click', (e) => {
         e.preventDefault();
 
         if (this.check()) {
