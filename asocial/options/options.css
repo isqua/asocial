@@ -132,25 +132,14 @@ body {
     margin: 0 0 5px;
 }
 
-.form-row:last-of-type {
-    padding-bottom: 5px;
+.btn-add,
+.btn-save {
+    display: none;
 }
 
-.edit-buttons-row {
-    margin-left: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 5px;
-
-    border: none;
-}
-
-.error-row {
-    padding: 10px 15px;
-    border-radius: 2px;
-    color: #a94442;
-    border: 1px solid #a94442;
-    background-color: #f2dede;
+.form-mode-add .btn-add,
+.form-mode-edit .btn-save {
+    display: block;
 }
 
 .form-checkbox {

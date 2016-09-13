@@ -62,8 +62,8 @@
   "options_add": {
     "message": "Add"
   },
-  "options_edit": {
-    "message": "Change"
+  "options_save": {
+    "message": "Save"
   },
   "options_newrule": {
     "message": "New rule"
