@@ -147,7 +147,6 @@ function FormManager() {
      * @param {String} type
      */
     this.show = (type) => {
-        this.container.classList.add('showed');
         this.editButtonRow.classList.toggle('hidden', type === 'add');
         this.saveButton.classList.toggle('hidden', type !== 'add');
         this.endTime.classList.toggle('onerror', !this.validateTime());
@@ -157,6 +156,9 @@ function FormManager() {
         this.inputs.forEach((input) => {
             input.addEventListener('change', this.toggleButtons);
         });
+
+        this.container.classList.add('showed');
+        this.trigger('show');
     };
 
     this.hide = () => {
