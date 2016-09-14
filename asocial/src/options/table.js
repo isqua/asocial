@@ -21,6 +21,7 @@ function TableController() {
         } else {
             var number = target.dataset.number || target.parentNode.dataset.number;
 
+            this.select(number);
             this.trigger('click', number);
         }
     });
@@ -91,6 +92,28 @@ TableController.prototype.table = function(rules) {
     this.rulesTable.innerHTML = '';
     this.rulesTable.appendChild(utils.getFragment(rules.map(this.row, this)));
     this.rulesTable.classList.toggle('time-table-empty', rules.lenght === 0);
+};
+
+TableController.prototype.SELECTED_RULE = 'rule-line-selected';
+
+/**
+ * Highlight selected rule
+ * @param {Number} ruleNumber
+ */
+TableController.prototype.select = function(ruleNumber) {
+    this.deselect();
+    this.rulesTable.children[ruleNumber].classList.add(this.SELECTED_RULE);
+};
+
+/**
+ * Remove highlighting from rule
+ */
+TableController.prototype.deselect = function() {
+    var selectedRule = this.rulesTable.querySelector('.' + this.SELECTED_RULE);
+
+    if (selectedRule) {
+        selectedRule.classList.remove(this.SELECTED_RULE);
+    }
 };
 
 utils.inherit(TableController, EventEmitter);
