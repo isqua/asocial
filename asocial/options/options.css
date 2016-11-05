@@ -38,6 +38,7 @@ body {
 }
 
 .days {
+    position: relative;
     width: 170px;
 
     padding-top: 5px;
@@ -62,6 +63,18 @@ body {
 .rule-line {
     cursor: pointer;
     vertical-align: top;
+}
+
+.rule-line-active > .days:before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background-color: currentColor;
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    z-index: 1;
 }
 
 .rule-line:hover,

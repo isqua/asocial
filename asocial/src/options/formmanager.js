@@ -30,7 +30,7 @@
  * @typedef {Number[]} RuleDays
  */
 
-var utils = require('./utils');
+var utils = require('../utils');
 var EventEmitter = require('./eventemitter');
 var TimeHelper = require('./timehelper');
 

@@ -3,7 +3,7 @@
 var TimeHelper = require('./timehelper');
 var EventEmitter = require('./eventemitter');
 
-var utils = require('./utils');
+var utils = require('../utils');
 
 function getDay(n) {
     return chrome.i18n.getMessage(`days_${n}`);
@@ -79,6 +79,10 @@ TableController.prototype.row = function(rule, number) {
     buttonDelete.title = chrome.i18n.getMessage('delete');
 
     row.dataset.number = number;
+
+    if (utils.checkRule(new Date(), rule)) {
+        row.classList.add('rule-line-active');
+    }
 
     return row;
 };

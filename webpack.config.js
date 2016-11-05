@@ -19,5 +19,12 @@ module.exports = [
         output: {
             filename: 'asocial/options/options.js'
         }
+    },
+    {
+        entry: './asocial/src/event/disable.js',
+
+        output: {
+            filename: 'asocial/event/disable.js'
+        }
     }
 ];
