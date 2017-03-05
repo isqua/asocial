@@ -76,5 +76,14 @@ module.exports = {
         }
 
         return isAfterStart && isBeforeEnd;
+    },
+
+    /**
+     * setTitle - set title for popup (on icon's hover)
+     *
+     * @param  {String} title
+     */
+    setTitle: function setTitle(title) {
+        chrome.browserAction.setTitle({ title });
     }
 };

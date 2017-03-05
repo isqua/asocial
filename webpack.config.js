@@ -21,10 +21,10 @@ module.exports = [
         }
     },
     {
-        entry: './asocial/src/event/disable.js',
+        entry: './asocial/src/background.js',
 
         output: {
-            filename: 'asocial/event/disable.js'
+            filename: 'asocial/background/background.js'
         }
     }
 ];
