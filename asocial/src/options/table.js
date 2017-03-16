@@ -1,6 +1,6 @@
 'use strict';
 
-var TimeHelper = require('./timehelper');
+var TimeHelper = require('../timehelper');
 var EventEmitter = require('./eventemitter');
 
 var utils = require('../utils');

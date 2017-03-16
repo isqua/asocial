@@ -32,7 +32,7 @@
 
 var utils = require('../utils');
 var EventEmitter = require('./eventemitter');
-var TimeHelper = require('./timehelper');
+var TimeHelper = require('../timehelper');
 
 function FormManager() {
     this.form = document.querySelector('#add-rule-form');

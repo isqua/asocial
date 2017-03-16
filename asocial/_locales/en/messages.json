@@ -76,5 +76,11 @@
   },
   "help_text": {
     "message": "<p>Hide news feed in social networks to prevent be distracted.</p><p><b>Set up shedule.</b> Choose time and days when you want to focus. Choose sites which makes you distracted.</p><p>We can block Twitter, Facebook, VK and Ok.ru.</p>"
+  },
+  "title_closed": {
+    "message": "Blocked until"
+  },
+  "title_tomorrow": {
+    "message": "tomorrow"
   }
 }
