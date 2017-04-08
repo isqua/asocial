@@ -26,7 +26,7 @@ function shouldDisable(network, callback) {
     chrome.storage.sync.get('rules', rulesContainer => {
         var currentTime = new Date();
 
-        var enabledRules = rulesContainer.rules.filter(rule => utils.checkRule(currentTime, rule, network));
+        var enabledRules = (rulesContainer.rules || []).filter(rule => utils.checkRule(currentTime, rule, network));
 
         callback(enabledRules);
     });

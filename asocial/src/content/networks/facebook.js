@@ -38,4 +38,8 @@ function replaceNewsBlock() {
     }
 }
 
-blocker.init('facebook', replaceNewsBlock);
+function isLoaded() {
+    return Boolean(document.querySelector('#stream_pagelet'));
+}
+
+blocker.init('facebook', replaceNewsBlock, isLoaded);
