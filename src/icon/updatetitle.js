@@ -3,9 +3,7 @@
 var utils = require('../utils');
 
 function setDefaultTitle() {
-    utils.setTitle({
-        title: 'Asocial'
-    });
+    utils.setTitle('Asocial');
 }
 
 chrome.tabs.onActivated.addListener(setDefaultTitle);
