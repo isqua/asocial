@@ -18,7 +18,7 @@ function replaceNewsBlock() {
     /**
      * @constant {HTMLElement} NEWS_BLOCK - substituted news block.
      */
-    var NEWS_BLOCK = document.querySelector('#stream_pagelet');
+    var NEWS_BLOCK = document.querySelector('#content_container');
     var RIGHT_COLUMN = document.querySelector('#rightCol');
     var LEFT_COLUMN = document.querySelector('#leftCol');
 
@@ -39,7 +39,7 @@ function replaceNewsBlock() {
 }
 
 function isLoaded() {
-    return Boolean(document.querySelector('#stream_pagelet'));
+    return Boolean(document.querySelector('#content_container'));
 }
 
 blocker.init('facebook', replaceNewsBlock, isLoaded);
