@@ -75,15 +75,14 @@ module.exports = {
                 // If content is loaded but not blocked, block it
                 if (this.DOMContentLoaded && isLoaded()) {
                     newsBlocker();
-
-                    var asocialContentObserver = new MutationObserver(function() {
-                        chrome.runtime.sendMessage(network);
-                    });
-
-                    asocialContentObserver.observe(document.body, { attributes: true });
                     this.showDocument();
                     this.isInited = true;
                 }
+            }
+
+            if (shouldDisable && this.isInited) {
+                newsBlocker();
+                this.showDocument();
             }
         };
     },
@@ -94,6 +93,7 @@ module.exports = {
          */
         return () => {
             this.DOMContentLoaded = true;
+
         };
     },
 
@@ -109,6 +109,18 @@ module.exports = {
 
         chrome.runtime.onMessage.addListener(this.onMessage(network, newsBlocker, isLoaded));
         this.check(network);
+
+        var asocialContentObserver = new MutationObserver(function() {
+            if (this.isDisabled) {
+                this.hideDocument();
+            }
+            chrome.runtime.sendMessage(network);
+        });
+
         window.addEventListener('DOMContentLoaded', this.onDocumentLoaded());
+
+        window.addEventListener('DOMContentLoaded', function() {
+            asocialContentObserver.observe(document.body, { attributes: true });
+        });
     }
 };
