@@ -2,7 +2,6 @@ module.exports = {
     CHECKING_TIMEOUT: 5000,
     CHECKING_TIMEOUT_BEFORE_LOAD: 300,
 
-    isInited: false,
     isDisabled: false,
     isHidden: false,
     DOMContentLoaded: false,
@@ -13,7 +12,7 @@ module.exports = {
     check: function check(network) {
         chrome.runtime.sendMessage(network);
 
-        var checkingTimeout = this.isInited ? this.CHECKING_TIMEOUT : this.CHECKING_TIMEOUT_BEFORE_LOAD;
+        var checkingTimeout = this.DOMContentLoaded ? this.CHECKING_TIMEOUT : this.CHECKING_TIMEOUT_BEFORE_LOAD;
 
         setTimeout(() => this.check(network), checkingTimeout);
     },
@@ -53,11 +52,10 @@ module.exports = {
     /**
      * @param  {String} network - name of network(e.g. vk)
      * @param  {Function} newsBlocker - function, which replaces news block to asocial block
-     * @param  {Function} isLoaded — function to check if website is completely loaded
      *
      * @returns {Function}
      */
-    onMessage: function(network, newsBlocker, isLoaded) {
+    onMessage: function(network, newsBlocker) {
         /**
          * Block site if needed, or reload when site is blocked but should be shown
          * @param {Boolean} shouldDisable
@@ -67,34 +65,27 @@ module.exports = {
                 return window.location.reload();
             }
 
-            if (shouldDisable && ! this.isInited) {
-                // If it’s first message, hide all on the page
-                this.hideDocument();
+            // If content is loaded but not blocked, block it
+            if (shouldDisable && this.DOMContentLoaded) {
+                newsBlocker();
+                this.showDocument();
                 this.isDisabled = true;
-
-                // If content is loaded but not blocked, block it
-                if (this.DOMContentLoaded && isLoaded()) {
-                    newsBlocker();
-
-                    var asocialContentObserver = new MutationObserver(function() {
-                        chrome.runtime.sendMessage(network);
-                    });
-
-                    asocialContentObserver.observe(document.body, { attributes: true });
-                    this.showDocument();
-                    this.isInited = true;
-                }
             }
         };
     },
 
-    onDocumentLoaded: function() {
-        /**
-         * Set flag when document is loaded
-         */
-        return () => {
-            this.DOMContentLoaded = true;
-        };
+    /**
+     * Set flag when document is loaded
+     * @param {String} network - name of network(e.g. vk)
+     */
+    onDocumentLoaded: function(network) {
+        var asocialContentObserver = new MutationObserver(function() {
+            chrome.runtime.sendMessage(network);
+        });
+
+        this.DOMContentLoaded = true;
+
+        asocialContentObserver.observe(document.body, { attributes: true });
     },
 
     /**
@@ -102,13 +93,22 @@ module.exports = {
      *
      * @param  {String} network - name of network(e.g. vk)
      * @param  {Function} newsBlocker - function, which replaces news block to asocial block
-     * @param  {Function} [isLoaded] — function to check if website is completely loaded
      */
-    init: function init(network, newsBlocker, isLoaded) {
-        isLoaded = isLoaded || (() => Boolean(document.body));
+    init: function init(network, newsBlocker) {
+        var onFirstMessage = (shouldDisable) => {
+            // If site should be blocked, hide everything on the page
+            if (shouldDisable) {
+                this.hideDocument();
+                this.isDisabled = true;
+            }
 
-        chrome.runtime.onMessage.addListener(this.onMessage(network, newsBlocker, isLoaded));
+            chrome.runtime.onMessage.removeListener(onFirstMessage);
+            chrome.runtime.onMessage.addListener(this.onMessage(network, newsBlocker));
+        };
+
+        chrome.runtime.onMessage.addListener(onFirstMessage);
         this.check(network);
-        window.addEventListener('DOMContentLoaded', this.onDocumentLoaded());
+
+        window.addEventListener('DOMContentLoaded', () => this.onDocumentLoaded(network));
     }
 };
