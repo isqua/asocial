@@ -33,6 +33,12 @@
       "js": ["content/ok.js"],
       "css": ["content/ok.css"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content/yt.js"],
+      "css": ["content/yt.css"],
+      "run_at": "document_start"
     }
   ],
   "icons": {
