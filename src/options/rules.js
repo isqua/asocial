@@ -1,6 +1,8 @@
 'use strict';
 
 function Rules(rules) {
+    rules = rules.filter(Boolean);
+
     this.storage = { rules };
 
     this.add = this.add.bind(this);
