@@ -4,7 +4,7 @@
   "name": "Asocial",
   "default_locale": "en",
   "description": "Make you more concentrated. Hide newsfeed of popular social networks on schedule. Supported sites: Facebook, Twitter, Vk.com, Ok.ru",
-  "version": "0.0.3",
+  "version": "0.0.4",
 
   "action": {
     "default_icon": "icon.png"
