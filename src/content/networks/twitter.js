@@ -18,7 +18,9 @@ function replaceNewsBlock() {
     /**
      * @constant {HTMLElement} NEWS_BLOCK - substituted news block.
      */
-    var NEWS_BLOCK = document.querySelector('#timeline');
+    var NEWS_BLOCK = document.querySelector('[role=main]');
+
+    console.log({ NEWS_BLOCK });
 
     if (NEWS_BLOCK) {
         var newsParent = NEWS_BLOCK.parentNode;

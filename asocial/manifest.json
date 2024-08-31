@@ -23,7 +23,7 @@
       "run_at": "document_start"
     },
     {
-      "matches": ["*://*.twitter.com/*"],
+      "matches": ["*://*.twitter.com/*", "*://*.x.com/*"],
       "js": ["content/tw.js"],
       "css": ["content/tw.css"],
       "run_at": "document_start"
