@@ -84,6 +84,6 @@ module.exports = {
      * @param  {String} title
      */
     setTitle: function setTitle(title) {
-        chrome.browserAction.setTitle({ title });
+        chrome.action.setTitle({ title });
     }
 };
