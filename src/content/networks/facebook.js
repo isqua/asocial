@@ -18,23 +18,13 @@ function replaceNewsBlock() {
     /**
      * @constant {HTMLElement} NEWS_BLOCK - substituted news block.
      */
-    var NEWS_BLOCK = document.querySelector('#content_container');
-    var RIGHT_COLUMN = document.querySelector('#rightCol');
-    var LEFT_COLUMN = document.querySelector('#leftCol');
+    var NEWS_BLOCK = document.querySelector('[role=main]');
 
     if (NEWS_BLOCK && (window.location.pathname.indexOf('messages') === -1)) {
         var newsParent = NEWS_BLOCK.parentNode;
 
         newsParent.insertBefore(makeAsocialBlock(), NEWS_BLOCK);
         newsParent.removeChild(NEWS_BLOCK);
-    }
-
-    if (RIGHT_COLUMN) {
-        RIGHT_COLUMN.parentNode.removeChild(RIGHT_COLUMN);
-    }
-
-    if (LEFT_COLUMN) {
-        LEFT_COLUMN.parentNode.removeChild(LEFT_COLUMN);
     }
 }
 
